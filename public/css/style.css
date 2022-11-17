@@ -1,0 +1,29 @@
+.grupo-botones {
+    display: flex;
+}
+
+.space {
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+.boton-warning {
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+p {
+    align-items: center;
+}
+
+.contenedor-grafica {
+    width: 100%;
+    background-color: yellow;
+    display: flex;
+}
+
+.graficas {
+    display: flex;
+    background-color: aqua;
+    width: 50%;
+}
