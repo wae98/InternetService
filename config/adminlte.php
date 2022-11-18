@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Punto de Venta',
+    'title' => 'INTERNET SERVICE',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -232,7 +232,34 @@ return [
             'can'          => 'dashboard',
             'label_color' => 'success',
         ],
-
+        [
+            'text'    => 'Administración',
+            'icon'    => 'fas fa-users-cog',
+            'can'          => 'MenuAdministracion',
+            'submenu' => [
+                [
+                    'text'        => 'Administracion de Routers',
+                    'icon'        => 'fas fa-tasks',
+                    'can'          => 'routersAdministracion',
+                    'submenu' => [
+                        [
+                            'text'        => 'Status Router',
+                            'route'         => 'statusRouters.index',
+                            'icon'        => 'fas fa-toggle-on',
+                            'can'          => 'status.routers.listar',
+                            'label_color' => 'success',
+                        ],
+                        [
+                            'text'        => 'Routers',
+                            'route'         => 'routers.index',
+                            'icon'        => 'fas fa-wifi',
+                            'can'          => 'routers.listar',
+                            'label_color' => 'success',
+                        ]
+                    ]
+                ],
+            ],
+        ],
         [
             'text'    => 'Usuarios',
             'url'     => 'usuarios',

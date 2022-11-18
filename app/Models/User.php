@@ -64,15 +64,21 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function empleado(){
-        return $this->belongsTo('App\Models\Empleado');
+
+
+    public function ServiceProvider(){
+        return $this->belongsTo('App\Models\ServiceProvider');
     }
 
-    public function compra(){
-        return $this->belongsTo('App\Models\Compra');
+    public function customer(){
+        return $this->belongsTo('App\Models\Customer');
     }
 
-    public function venta(){
-        return $this->belongsTo('App\Models\Venta');
+    public function fail(){
+        return $this->belongsTo('App\Models\Customer');
+    }
+
+    public function PaymentService(){
+        return $this->belongsTo('App\Models\PaymentService');
     }
 }

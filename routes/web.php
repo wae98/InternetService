@@ -2,22 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProveedoresController;
-use App\Http\Controllers\DepartamentosController;
-use App\Http\Controllers\CategoriasController;
-use App\Http\Controllers\AgenciasController;
-use App\Http\Controllers\EmpleadosController;
-use App\Http\Controllers\ClientesController;
-use App\Http\Controllers\ProductosController;
-use App\Http\Controllers\ComprasController;
-use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\RolesController;
-use App\Http\Controllers\SlibretasController;
-use App\Http\Controllers\SolicitudesController;
+use App\Http\Controllers\StatusRouterController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\VClienteController;
-use App\Http\Controllers\VentasController;
-use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -35,6 +22,11 @@ Route::get('/', function () {
 });
 
 Route::resource('dashboard', DashboardController::class)->middleware(['auth:sanctum', 'verified']);
+
+Route::resource('statusRouters', StatusRouterController::class)->middleware(['auth:sanctum', 'verified']);
+
+
+Route::resource('routers', StatusRouterController::class)->middleware(['auth:sanctum', 'verified']);
 
 Route::resource('usuarios', UsersController::class)->middleware(['auth:sanctum', 'verified']);
 
