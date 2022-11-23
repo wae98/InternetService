@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->boolean('status');
             $table->date('date_report');
-            $table->date('date_repair');
+            $table->date('date_repair')->nullable();
+            $table->string('observations');
             $table->unsignedBigInteger('service_provider_id');
             $table->foreign('service_provider_id')->references('id')->on('service_providers');
             $table->unsignedBigInteger('user_id');

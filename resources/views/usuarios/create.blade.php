@@ -24,7 +24,7 @@
                             @csrf
                                 <div class="form-group">
                                     <label for="name">Nombre <b style="color: red">*</b></label>
-                                    <input type="text" name="name" class="form-control " id="name">
+                                    <input type="text" name="name" class="form-control " id="name" value="{{ old('name') }}" >
                                     @error('name')
                                         <small style="color:red">{{ $message }}</small>
                                     @enderror
@@ -32,7 +32,7 @@
 
                                 <div class="form-group">
                                     <label for="username">Usuario <b style="color: red">*</b></label>
-                                    <input type="text" name="username" class="form-control " id="username">
+                                    <input type="text" name="username" class="form-control " id="username" value="{{ old('username') }}">
                                     @error('username')
                                         <small style="color:red">{{ $message }}</small>
                                     @enderror
@@ -40,21 +40,21 @@
 
                                 <div class="form-group">
                                     <label for="email">Correo <b style="color: red">*</b></label>
-                                    <input type="email" name="email" class="form-control" id="email">
+                                    <input type="email" name="email" class="form-control" id="email" value="{{ old('email') }}">
                                     @error('email')
                                         <small style="color:red">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="phone_number">Telefono <b style="color: red">*</b></label>
-                                    <input type="phone_number" name="phone_number" class="form-control" id="phone_number">
+                                    <input type="phone_number" name="phone_number" class="form-control" id="phone_number" value="{{ old('phone_number') }}">
                                     @error('phone_number')
                                     <small style="color:red">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="roles">Roles <b style="color: red">*</b> </label>
-                                    <select class="form-control" name="roles" id="roles">
+                                    <select class="form-control" name="roles" id="roles" value="{{ old('roles') }}">
                                         <option value="">Seleccione un rol</option>
                                         <optgroup label="Roles Disponibles">
                                             @foreach ($roles as $role)

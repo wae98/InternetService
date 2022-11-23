@@ -258,22 +258,145 @@ return [
                         ]
                     ]
                 ],
+                [
+                    'text'        => 'Administracion de Clientes',
+                    'icon'        => 'fas fa-address-book',
+                    'can'          => 'customerAdministration',
+                    'submenu' => [
+                        [
+                            'text'        => 'Sectores',
+                            'route'         => 'sectors.index',
+                            'icon'        => 'fas fa-bezier-curve',
+                            'can'          => 'sectors.listar',
+                            'label_color' => 'success',
+                        ],
+                        [
+                            'text'        => 'Clientes',
+                            'route'         => 'customers.index',
+                            'icon'        => 'fas fa-user-tie',
+                            'can'          => 'customers.listar',
+                            'label_color' => 'success',
+                        ],
+                        [
+                            'text'        => 'Referencias Personales',
+                            'route'         => 'references.index',
+                            'icon'        => 'fas fa-people-arrows',
+                            'can'          => 'personal.references.listar',
+                            'label_color' => 'success',
+                        ]
+
+                    ]
+                ],
+                [
+                    'text'        => 'Administracion de Servicios',
+                    'icon'        => 'fas fa-briefcase',
+                    'can'          => 'serviceAdministration',
+                    'submenu' => [
+                        [
+                            'text'        => 'Tipos de Cable',
+                            'route'         => 'typecables.index',
+                            'icon'        => 'fas fa-ethernet',
+                            'can'          => 'cable.type.listar',
+                            'label_color' => 'success',
+                        ],
+                        [
+                            'text'        => 'Servicios',
+                            'route'         => 'services.index',
+                            'icon'        => 'fas fa-th-list',
+                            'can'          => 'routers.listar',
+                            'label_color' => 'success',
+                        ],
+                        [
+                            'text'        => 'Mufas',
+                            'route'         => 'mufas.index',
+                            'icon'        => 'fas fa-broadcast-tower',
+                            'can'          => 'mufas.listar',
+                            'label_color' => 'success',
+                        ],
+                        [
+                            'text'        => 'Servicios Adquiridos',
+                            'route'         => 'servicesproviders.index',
+                            'icon'        => 'fas fa-shopping-cart',
+                            'can'          => 'services.providers.listar',
+                            'label_color' => 'success',
+                        ],
+                        [
+                            'text'        => 'Fallas de Servicios',
+                            'route'         => 'fails.index',
+                            'icon'        => 'fas fa-file-signature',
+                            'can'          => 'fails.listar',
+                            'label_color' => 'success',
+                        ],
+                        [
+                            'text'        => 'Pago de Servicios',
+                            'route'         => 'paymentservices.index',
+                            'icon'        => 'fas fa-money-bill-alt',
+                            'can'          => 'payments.services.listar',
+                            'label_color' => 'success',
+                        ]
+                    ]
+                ],
             ],
         ],
+
         [
-            'text'    => 'Usuarios',
-            'url'     => 'usuarios',
-            'icon'    => 'fas fa-user',
-            'can'          => 'usuarios.listar',
-            'label_color' => 'success',
+            'text'    => 'Reportes',
+            'icon'    => 'fas fa-file-alt',
+
+            'submenu' => [
+                [
+                    'text'    => 'Reporte de Clientes',
+                    'route'     => 'customers.excel.index',
+                    'icon'    => 'fas fa-user-tie',
+
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Reporte de Servicios Adquiridos',
+                    'route'         => 'services.excel.index',
+
+                    'icon'        => 'fas fa-handshake',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Reporte Pagos',
+                    'route'         => 'payments.excel.index',
+
+                    'icon'        => 'fas fa-money-bill-alt',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Reporte de Fallas',
+                    'route'         => 'fails.excel.index',
+
+                    'icon'        => 'fas fa-tools',
+                    'label_color' => 'success',
+                ],
+            ],
         ],
+
         [
-            'text'        => 'Roles',
-            'route'         => 'roles.index',
-            'can' =>            'roles.listar',
-            'icon'        => 'fas fa-user-shield',
-            'label_color' => 'success',
+            'text'    => 'Seguridad',
+            'icon'    => 'fas fa-shield-alt',
+            'can'          => 'MenuSeguridad',
+            'submenu' => [
+                [
+                    'text'    => 'Usuarios',
+                    'url'     => 'usuarios',
+                    'icon'    => 'fas fa-user',
+                    'can'          => 'usuarios.listar',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Roles',
+                    'route'         => 'roles.index',
+                    'can' =>            'roles.listar',
+                    'icon'        => 'fas fa-user-shield',
+                    'label_color' => 'success',
+                ],
+            ],
         ],
+
     ],
 
     /*

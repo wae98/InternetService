@@ -22,12 +22,18 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="nombre">Nombre <b style="color: red">*</b></label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                        @error('name')
+                        <small style="color:red">{{ $message }}</small>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="description">Descripcion <b style="color: red">*</b></label>
-                        <input type="text" name="description" class="form-control">
+                        <input type="text" name="description" class="form-control" value="{{ old('description') }}">
+                        @error('description')
+                        <small style="color:red">{{ $message }}</small>
+                        @enderror
                     </div>
                 </div>
 

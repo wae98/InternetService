@@ -9,7 +9,7 @@ class Router extends Model
 {
     use HasFactory;
 
-    protected $fillable=['id', 'onu_number', 'onu_type','mac_address', 'ip_number', 'vlan', 'pon_number', 'slot', 'color_pictel', 'status_router_id'];
+    protected $fillable=['id', 'onu_number', 'onu_type','onu_position','identification','mac_address', 'ip_number', 'vlan', 'pon_number', 'slot', 'color_pictel', 'status_router_id'];
 
     protected $guarded = [];
 

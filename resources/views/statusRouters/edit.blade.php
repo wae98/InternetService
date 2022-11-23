@@ -27,12 +27,18 @@
                                     <label for="name">Nombre <b style="color: red">*</b></label>
                                     <input type="text" name="name" class="form-control" id="name"
                                            value="{{ $status->name }}">
+                                    @error('name')
+                                    <small style="color:red">{{ $message }}</small>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="description">Description <b style="color: red">*</b></label>
                                     <input type="text" name="description" class="form-control" id="description"
                                            value="{{ $status->description }}">
+                                    @error('description')
+                                    <small style="color:red">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
 

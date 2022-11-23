@@ -67,7 +67,7 @@ class User extends Authenticatable
 
 
     public function ServiceProvider(){
-        return $this->belongsTo('App\Models\ServiceProvider');
+        return $this->hasMany('App\Models\ServiceProvider');
     }
 
     public function customer(){
@@ -79,6 +79,6 @@ class User extends Authenticatable
     }
 
     public function PaymentService(){
-        return $this->belongsTo('App\Models\PaymentService');
+        return $this->hasMany('App\Models\PaymentService');
     }
 }

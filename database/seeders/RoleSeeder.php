@@ -25,6 +25,29 @@ class RoleSeeder extends Seeder
             'description' => 'Permite visualizar el dashboard'
         ])->syncRoles([$role]);
 
+        //PERMISO MENU SEGURIDAD
+        Permission::create([
+            'name' => 'MenuSeguridad',
+            'description' => 'Acceso al menu de seguridad'
+        ])->syncRoles([$role]);
+        //PERMISO MENU SEGURIDAD
+        Permission::create([
+            'name' => 'MenuReportes',
+            'description' => 'Acceso al menu de reportes'
+        ])->syncRoles([$role]);
+
+        //PERMISO MENU CLIENTES
+        Permission::create([
+            'name' => 'customerAdministration',
+            'description' => 'Acceso al menu de clientes'
+        ])->syncRoles([$role]);
+
+        //PERMISO MENU CLIENTES
+        Permission::create([
+            'name' => 'serviceAdministration',
+            'description' => 'Acceso al menu de servicios'
+        ])->syncRoles([$role]);
+
 
         //asignacion al modulo de clientes
         Permission::create([
@@ -103,6 +126,8 @@ class RoleSeeder extends Seeder
             'name' => 'MenuAdministracion',
             'description' => 'Permite acceder a los modulos de administracion'
         ])->syncRoles([$role]);
+
+
         //permisos para Routers
         Permission::create([
             'name' => 'routers.listar',
@@ -129,6 +154,260 @@ class RoleSeeder extends Seeder
             'name' => 'routers.eliminar',
             'description' => 'Permite eliminar un router'
         ])->syncRoles([$role]);
+
+
+        //permisos para Sectores
+        Permission::create([
+            'name' => 'sectors.listar',
+            'description' => 'Permite listar los sectors creados'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'sectors.visualizar',
+            'description' => 'Permite visualizar un sector en especifico.'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'sectors.crear',
+            'description' => 'Permite crear un nuevo sector'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'sectors.editar',
+            'description' => 'Permite la edicion de un sector en especifico'
+
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'sectors.eliminar',
+            'description' => 'Permite eliminar un sector'
+        ])->syncRoles([$role]);
+
+        //permisos para Customer
+        Permission::create([
+            'name' => 'customers.listar',
+            'description' => 'Permite listar los clientes creados'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'customers.visualizar',
+            'description' => 'Permite visualizar un cliente en especifico.'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'customers.crear',
+            'description' => 'Permite crear un nuevo cliente'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'customers.editar',
+            'description' => 'Permite la edicion de un cliente en especifico'
+
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'customers.eliminar',
+            'description' => 'Permite eliminar un cliente'
+        ])->syncRoles([$role]);
+
+
+        //permisos para Referencias
+
+        Permission::create([
+            'name' => 'personal.references.listar',
+            'description' => 'Permite listar los referencias personales  creadas'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'personal.references.visualizar',
+            'description' => 'Permite visualizar una referencias personales en especifico.'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'personal.references.crear',
+            'description' => 'Permite crear una nueva referencia personal'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'personal.references.editar',
+            'description' => 'Permite la edicion de una referencia personal en especifico'
+
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'personal.references.eliminar',
+            'description' => 'Permite eliminar una referencia personal'
+        ])->syncRoles([$role]);
+
+
+        //permisos para tipos de cables
+
+        Permission::create([
+            'name' => 'cable.type.listar',
+            'description' => 'Permite listar los tipos de cables creados'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'cable.type.visualizar',
+            'description' => 'Permite visualizar un tipo de cable en especifico.'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'cable.type.crear',
+            'description' => 'Permite crear un tipo de cable '
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'cable.type.editar',
+            'description' => 'Permite la edicion de un tipo de cable en especifico'
+
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'cable.type.eliminar',
+            'description' => 'Permite eliminar un tipo de cable'
+        ])->syncRoles([$role]);
+
+
+        //permisos para Services
+        Permission::create([
+            'name' => 'services.listar',
+            'description' => 'Permite listar los servicios creados'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'services.visualizar',
+            'description' => 'Permite visualizar un servicio en especifico.'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'services.crear',
+            'description' => 'Permite crear un nuevo servicio'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'services.editar',
+            'description' => 'Permite la edicion de un servicio en especifico'
+
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'services.eliminar',
+            'description' => 'Permite eliminar un servicio'
+        ])->syncRoles([$role]);
+
+
+        //permisos para Mufas
+        Permission::create([
+            'name' => 'mufas.listar',
+            'description' => 'Permite listar las mufas creadas'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'mufas.visualizar',
+            'description' => 'Permite visualizar una mufa en especifico.'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'mufas.crear',
+            'description' => 'Permite crear una nueva mufa'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'mufas.editar',
+            'description' => 'Permite la edicion de una mufa  en especifico'
+
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'mufas.eliminar',
+            'description' => 'Permite eliminaruna mufa  en especifico'
+
+        ])->syncRoles([$role]);
+
+        //permisos para Fails
+        Permission::create([
+            'name' => 'fails.listar',
+            'description' => 'Permite listar las fallas creadas'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'fails.visualizar',
+            'description' => 'Permite visualizar una falla en especifico.'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'fails.crear',
+            'description' => 'Permite crear una nueva falla'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'fails.editar',
+            'description' => 'Permite la edicion de una falla en especifico'
+
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'fails.eliminar',
+            'description' => 'Permite eliminar una falla'
+        ])->syncRoles([$role]);
+
+
+
+        //permisos para pago de servicios adquiridos
+        Permission::create([
+            'name' => 'payments.services.listar',
+            'description' => 'Permite listar los pagos de servicios adquiridos'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'payments.services.visualizar',
+            'description' => 'Permite visualizar un pago de servicio adquirido en especifico.'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'payments.services.crear',
+            'description' => 'Permite crear un nuevo pago de servicios adquiridos'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'payments.services.editar',
+            'description' => 'Permite la edicion de un pago de servicio adquirido en especifico'
+
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'payments.services.eliminar',
+            'description' => 'Permite eliminar un pago de servicio adquirido'
+        ])->syncRoles([$role]);
+
+        //permisos para proveedor de servicios
+        Permission::create([
+            'name' => 'services.providers.listar',
+            'description' => 'Permite listar los servicios adquiridos'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'services.providers.visualizar',
+            'description' => 'Permite visualizar un servicio adquirido en especifico.'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'services.providers.crear',
+            'description' => 'Permite crear un nuevo servicios adquiridos'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'services.providers.editar',
+            'description' => 'Permite la edicion de un servicio adquirido en especifico'
+
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'services.providers.eliminar',
+            'description' => 'Permite eliminar un servicio adquirido'
+        ])->syncRoles([$role]);
+
 
 
 

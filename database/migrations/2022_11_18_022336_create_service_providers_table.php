@@ -23,7 +23,9 @@ return new class extends Migration
             $table->foreign('router_id')->references('id')->on('routers');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->boolean('status');
+            $table->unsignedBigInteger('mufa_id');
+            $table->foreign('mufa_id')->references('id')->on('mufas');
+            $table->boolean('status')->default(true);
             $table->string('observations');
             $table->timestamps();
         });

@@ -9,7 +9,7 @@ class Fail extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'service_provider_id', 'status', 'user_id', 'date_repair', 'date_report'];
+    protected $fillable = ['id', 'service_provider_id','observations', 'status', 'user_id', 'date_repair', 'date_report'];
 
     protected $guarded = [];
 

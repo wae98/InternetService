@@ -1,0 +1,17 @@
+import: 
+  - recipe/laravel.php
+
+config:
+  repository: 'https://github.com/wae98/InternetService.git'
+
+hosts:
+  143.198.130.148:
+    remote_user: deployer
+    deploy_path: '~/InternetServices'
+
+tasks:
+  build:
+    - run: uptime  
+
+after:
+  deploy:failed: deploy:unlock

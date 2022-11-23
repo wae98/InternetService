@@ -13,7 +13,7 @@ class ServiceProvider extends Model
 
     protected $guarded = [];
 
-    public function services(){
+    public function service(){
         return $this->belongsTo('App\Models\Service');
     }
 
@@ -29,8 +29,8 @@ class ServiceProvider extends Model
         return $this->belongsTo('App\Models\Mufa');
     }
 
-    public function users(){
-        return $this->hasMany('App\Models\User');
+    public function user(){
+        return $this->belongsTo('App\Models\User');
     }
 
     public function fail(){
@@ -38,7 +38,7 @@ class ServiceProvider extends Model
     }
 
     public function PaymentService(){
-        return $this->belongsTo('App\Models\PaymentService');
+        return $this->hasMany('App\Models\PaymentService');
     }
 
 }

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('vlan');
             $table->string('pon_number');
             $table->string('slot');
+            $table->string('identification');
             $table->string('color_pictel');
             $table->unsignedBigInteger('status_router_id');
             $table->foreign('status_router_id')->references('id')->on('status_routers');

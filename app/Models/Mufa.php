@@ -9,7 +9,7 @@ class Mufa extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'ubication', 'number', 'is_cable_onu', 'position_onu_olt', 'number_conexion'];
+    protected $fillable = ['id', 'ubication','status', 'number', 'is_cable_onu', 'position_onu_olt', 'number_conexion'];
 
     protected $guarded = [];
 

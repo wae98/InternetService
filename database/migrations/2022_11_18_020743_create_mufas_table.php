@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('ubication');
             $table->integer('number');
             $table->boolean('is_cable_onu');
+            $table->boolean('status')->default(1);
             $table->string('position_onu_olt');
             $table->integer('number_conexion');
             $table->timestamps();

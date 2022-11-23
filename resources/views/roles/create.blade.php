@@ -22,7 +22,7 @@
                 <div class="modal-body">
                         <div class="form-group">
                             <label for="nombre">Nombre <b style="color: red">*</b></label>
-                            <input type="text" name="name" class="form-control" id="nombre-create">
+                            <input type="text" name="name" class="form-control" value="{{ old('name') }}">
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
