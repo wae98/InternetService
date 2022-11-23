@@ -1,5 +1,6 @@
 import:
   - recipe/laravel.php
+  - contrib/npm.php
 
 config:
   repository: 'https://github.com/wae98/InternetService.git'
