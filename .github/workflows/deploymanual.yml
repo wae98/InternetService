@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Deploy Manul
+name: Deploy Manual
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -10,9 +10,9 @@ on:
     inputs:
       deploy_env:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Deploy Environment'
+        description: 'Deploy Environmet'
         # Default value if no value is explicitly provided
-        default: 'InternetService'
+        default: 'internet_service'
         # Input has to be provided for the workflow to run
         required: true
 
