@@ -6,7 +6,7 @@ config:
   repository: 'https://github.com/wae98/InternetService.git'
 
 hosts:
-  INTERNETSERVICE:
+  service_internet:
     remote_user: root
     host_name: 143.198.130.148
     deploy_path: '/var/www/internetservices'
