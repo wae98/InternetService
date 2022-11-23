@@ -1,15 +1,14 @@
 import:
   - recipe/laravel.php
-  - contribe/npm.php
 
 config:
   repository: 'https://github.com/wae98/InternetService.git'
 
 hosts:
-  service_internet:
+  InternetService:
     remote_user: root
-    host_name: 143.198.130.148
-    deploy_path: '/var/www/internetservices'
+    hostname: 143.198.130.148
+    deploy_path: '/var/www/InternetService'
 
 tasks:
   deploy:
@@ -26,7 +25,7 @@ tasks:
     - deploy:publish
 
   build:
-    - cd:"{{release_path}}"
+    - cd: "{{release_path}}"
     - run: "npm run build"
 
 after:
