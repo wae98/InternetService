@@ -1,17 +1,33 @@
-import: 
+import:
   - recipe/laravel.php
+  - contribe/npm.php
 
 config:
   repository: 'https://github.com/wae98/InternetService.git'
 
 hosts:
-  143.198.130.148:
-    remote_user: deployer
-    deploy_path: '~/InternetServices'
+  INTERNETSERVICE:
+    remote_user: root
+    host_name: 143.198.130.148
+    deploy_path: '/var/www/internetservices'
 
 tasks:
+  deploy:
+    - deploy:prepare
+    - deploy:vendors
+    - artisan:storage:link
+    - artisan:config:cache
+    - artisan:route:cache
+    - artisan:view:cache
+    - artisan:event:cache
+    - artisan:migrate
+    - npm:install
+    - build
+    - deploy:publish
+
   build:
-    - run: uptime  
+    - cd:"{{release_path}}"
+    - run: "npm run build"
 
 after:
   deploy:failed: deploy:unlock
