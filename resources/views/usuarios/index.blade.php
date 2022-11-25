@@ -16,7 +16,7 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <h3 class="card-title">
-                                @can('usuarios.crear')
+                                @can('usuarios.create')
                                     <a class="btn btn-success" href="{{ route('usuarios.create') }}"> Crear Nuevo Usuario</a>
                                 @endcan
                             </h3>

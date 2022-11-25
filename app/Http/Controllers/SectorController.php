@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class SectorController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('can:sectors.listar')->only('index');
+        $this->middleware('can:sectors.editar')->only('edit, update');
+        $this->middleware('can:sectors.visualizar')->only('show');
+        $this->middleware('can:sectors.crear')->only('create, store');
+        $this->middleware('can:sectors.eliminar')->only('destroy');
+    }
+
     public function index()
     {
         $sectors = Sector::all();
@@ -23,7 +32,7 @@ class SectorController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'payment_date' => 'required|min:5',
+            'payment_date' => 'required|min:1',
         ]);
 
         $routers = Sector::create($request->all());

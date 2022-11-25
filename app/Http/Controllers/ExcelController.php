@@ -10,6 +10,10 @@ use Rap2hpoutre\FastExcel\FastExcel as FastExcelFastExcel;
 
 class ExcelController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('can:reports')->only('PaymentsIndex, CustomerIndex, FailsIndex, ServicesIndex');
+    }
     public function PaymentsIndex(){
         return view('payments.report');
     }

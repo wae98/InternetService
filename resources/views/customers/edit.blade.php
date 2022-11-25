@@ -82,6 +82,67 @@
                                 </div>
 
                             </div>
+                            <div class="table-responsive-sm" >
+                                <div style="width: 100%;display: flex;padding: 1%">
+                                    <div style="text-align: left; width: 75%">
+                                        <h4 class="">Referencias Personales</h4>
+                                    </div>
+                                    <div style="text-align: right; width: 25%" >
+                                        <button type="button"  class="btn btn-success btn-sm add-option">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <table class="table table-bordered table-striped table-hover options">
+                                    <thead>
+                                    <tr>
+                                        <th>NOMBRE COMPLETO</th>
+                                        <th>TELEFONO</th>
+                                        <th>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach(old('option_text', ['']) as $key => $questionOption)
+                                        @if($customers->personalreference !==null)
+                                            @foreach($customers->personalreference as $references)
+                                                <tr>
+                                                    <td>
+                                                        <input
+                                                            class="form-control{{ $errors->has('option_text' . $key) ? 'is-invalid' : '' }}"
+                                                            type="text"
+                                                            name="option_text[{{ $loop->index }}]"
+                                                            value="{{ $references->names }}"
+                                                            required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control" name="is_correct[{{ $loop->index }}]" value="{{$references->phone_number}}">
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                        <tr>
+                                            <td>
+                                                <input
+                                                    class="form-control{{ $errors->has('option_text' . $key) ? 'is-invalid' : '' }}"
+                                                    type="text"
+                                                    name="option_text[{{ $loop->index }}]"
+                                                    value="{{ $questionOption }}"
+                                                    required>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control" name="is_correct[{{ $loop->index }}]" value="{{$questionOption}}">
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-xs btn-danger delete-option">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -105,8 +166,39 @@
 @stop
 
 
-@section('footer')
-      <div class="text-center">
-          <p class="alert" style="background-color: rgba(255,255,255,0.7); color:teal; font-size:10px;"><strong>- WALTER BAMAC - TODOS LOS DERECHOS RESERVADOS © 2022</strong></p>
-      </div>
- @endsection
+@section('js')
+    <script src="{{ asset('vendor/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+
+    <script>
+        $(function () {
+            let $options = $('table.options tbody');
+            let index = $options.find('tr').length;
+
+            $('.add-option').click(function (e) {
+                e.preventDefault();
+                if ($options.find('tr:last input[type="text"]').val()) {
+                    let $newRow = $options.find('tr:last').clone();
+                    $newRow.find('td input[type="text"]').prop({
+                        value: '',
+                        name: 'option_text[' + index + ']'
+                    });
+                    $newRow.find('td input[type="number"]').prop({
+                        value: '',
+                        name: 'is_correct[' + index + ']'
+                    });
+                    index++;
+                    $newRow.appendTo($options);
+                }
+            });
+
+            $options.on('click', '.delete-option', function (e) {
+                e.preventDefault();
+                if ($options.find('tr').length > 1) {
+                    $(this).closest('tr').remove();
+                }
+            });
+        });
+    </script>
+@endsection

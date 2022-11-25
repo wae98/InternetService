@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class FailController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('can:fails.listar')->only('index');
+        $this->middleware('can:fails.editar')->only('edit, update');
+        $this->middleware('can:fails.visualizar')->only('show');
+        $this->middleware('can:fails.crear')->only('create, store');
+        $this->middleware('can:fails.eliminar')->only('destroy');
+    }
     public function index()
     {
         $fails = Fail::all();

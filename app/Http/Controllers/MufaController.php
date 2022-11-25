@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class MufaController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('can:mufas.listar')->only('index');
+        $this->middleware('can:mufas.editar')->only('edit, update');
+        $this->middleware('can:mufas.visualizar')->only('show');
+        $this->middleware('can:mufas.crear')->only('create, store');
+        $this->middleware('can:mufas.eliminar')->only('destroy');
+    }
     public function index()
     {
         $mufas = Mufa::all();

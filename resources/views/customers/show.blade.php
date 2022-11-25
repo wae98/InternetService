@@ -2,6 +2,10 @@
 
 @section('title', 'Dashboard')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@endsection
+
 @section('content_header')
     <h1>Visualizar Cliente</h1>
 @stop
@@ -53,8 +57,29 @@
                                             <td> {{ $reference->names }} </td>
                                             <td> {{ $reference->phone_number }} </td>
                                             <td>
+                                                <div class="grupo-botones">
+                                                    @can('personal.references.editar')
+                                                        <div class="boton-warning">
+                                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                                                    data-target="#modal-update-reference-{{$reference->id}}">
+                                                                <i class="fas fa-edit"></i>
+                                                            </button>
+                                                        </div>
+                                                    @endcan
+                                                    @can('personal.references.eliminar')
+                                                        <form action="{{ route('references.destroy', $reference) }}"
+                                                              class="delete-usuario" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="btn btn-sm btn-danger">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endcan
+                                                </div>
                                             </td>
                                         </tr>
+                                        @include('customers.modal-update-reference')
                                     @endforeach
                                     </tbody>
 
@@ -72,3 +97,36 @@
         <!-- /.row -->
     </div>
 @stop
+@section('js')
+    @if (session('update') == 'ok')
+        <script>
+            Swal.fire({
+                type: 'success',
+                title: 'Registro actualizado',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        </script>
+    @endif
+    @if (session('create') == 'ok')
+        <script>
+            Swal.fire({
+                type: 'success',
+                title: 'Registro Creado',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        </script>
+    @endif
+
+    @if (session('delete') == 'ok')
+        <script>
+            Swal.fire({
+                type: 'success',
+                title: 'Registro Eliminado',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        </script>
+    @endif
+@endsection

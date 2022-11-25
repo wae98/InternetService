@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 
 class StatusRouterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    function __construct()
+    {
+        $this->middleware('can:status.routers.listar')->only('index');
+        $this->middleware('can:status.routers.editar')->only('edit, update');
+        $this->middleware('can:status.routers.visualizar')->only('show');
+        $this->middleware('can:status.routers.crear')->only('create, store');
+        $this->middleware('can:status.routers.eliminar')->only('destroy');
+    }
+
     public function index()
     {
         $statusRouter = StatusRouter::all();

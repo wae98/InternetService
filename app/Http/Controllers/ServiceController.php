@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('can:services.listar')->only('index');
+        $this->middleware('can:services.editar')->only('edit, update');
+        $this->middleware('can:services.visualizar')->only('show');
+        $this->middleware('can:services.crear')->only('create, store');
+        $this->middleware('can:services.eliminar')->only('destroy');
+    }
+
     public function index()
     {
         $services = Service::all();

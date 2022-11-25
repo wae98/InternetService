@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class RouterController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('can:routers.listar')->only('index');
+        $this->middleware('can:routers.editar')->only('edit, update');
+        $this->middleware('can:routers.visualizar')->only('show');
+        $this->middleware('can:routers.crear')->only('create, store');
+        $this->middleware('can:routers.eliminar')->only('destroy');
+    }
+
     public function index()
     {
         $routers = Router::all();

@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\DB;
 
 class ServiceProviderController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('can:services.providers.listar')->only('index');
+        $this->middleware('can:services.providers.editar')->only('edit, update');
+        $this->middleware('can:services.providers.visualizar')->only('show');
+        $this->middleware('can:services.providers.crear')->only('create, store');
+        $this->middleware('can:services.providers.eliminar')->only('destroy');
+    }
+
     public function index()
     {
         $servicesproviders = ServiceProvider::all();

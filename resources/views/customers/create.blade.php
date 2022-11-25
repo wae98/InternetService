@@ -1,4 +1,8 @@
 @extends('adminlte::page')
+@section('css')
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/dataTables/jquery.dataTables.min.css') }}">
+@endsection
 
 @section('title', 'Dashboard')
 
@@ -24,16 +28,16 @@
                             <p class="mb-30">Los campos con (*) son obligatorios</p>
                         </div>
                     </div>
-                    <form action="{{route('customers.store')}}" class="validar-producto" method="POST">
+                    <form method="POST" action="{{route('customers.store')}}"  enctype="multipart/form-data">
                     @csrf
-                        <div class="form-group">
-                            <label for="names">NOMBRE COMPLETO <b style="color: red">*</b></label>
-                            <input type="text" name="names" class="form-control" value="{{ old('names') }}">
-                            @error('names')
-                            <small style="color:red">{{ $message }}</small>
-                            <br>
-                            @enderror
-                        </div>
+                            <div class="form-group">
+                                <label for="names">NOMBRE COMPLETO <b style="color: red">*</b></label>
+                                <input type="text" name="names" class="form-control" value="{{ old('names') }}">
+                                @error('names')
+                                <small style="color:red">{{ $message }}</small>
+                                <br>
+                                @enderror
+                            </div>
                           <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -55,7 +59,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
+                          </div>
                         <div class="form-group">
                             <label for="references_address">REFERENCIA  <b style="color: red">*</b></label>
                             <textarea name="references_address" class="form-control" value="{{ old('references_address') }}"></textarea>
@@ -65,7 +69,7 @@
                             @enderror
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label> SECTOR</label>
                                     <select name="sector_id" class="form-control" id="sector_id" value="{{ old('sector_id') }}">
@@ -82,7 +86,68 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label> COBRADOR</label>
+                                        <select name="user_id" class="form-control" id="user_id" value="{{ old('user_id') }}">
+                                            <option selected value="">Seleccione un cobrador</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{$user->id}}">{{$user->name}}</option>
+                                                @endforeach
+                                                </optgroup>
+                                        </select>
+                                        @error('user_id')
+                                        <small style="color:red">{{ $message }}</small>
+                                        <br>
+                                        @enderror
+                                    </div>
                             </div>
+                        </div>
+                        <div class="table-responsive-sm" >
+                            <div style="width: 100%;display: flex;padding: 1%">
+                                <div style="text-align: left; width: 75%">
+                                    <h4 class="">Referencias Personales</h4>
+                                </div>
+                                <div style="text-align: right; width: 25%" >
+                                    <button type="button"  class="btn btn-success btn-sm add-option">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <table class="table table-bordered table-striped table-hover options">
+                                <thead>
+                                <tr>
+                                    <th>NOMBRE COMPLETO</th>
+                                    <th>TELEFONO</th>
+                                    <th>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach(old('option_text', ['']) as $key => $questionOption)
+                                    <tr>
+                                        <td>
+                                            <input
+                                                class="form-control{{ $errors->has('option_text' . $key) ? 'is-invalid' : '' }}"
+                                                type="text"
+                                                name="option_text[{{ $loop->index }}]"
+                                                value="{{ $questionOption }}"
+                                                required>
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control" name="is_correct[{{ $loop->index }}]" value="{{$questionOption}}">
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-xs btn-danger delete-option">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -90,10 +155,9 @@
                                         <button type="submit" class="btn btn-outline-dark">CREAR CLIENTE</button>
                                     </div>
                                 </div>
-
                             </div>
+                        </div>
                         </form>
-                </div>
 
             </div>
             <!-- /.card-body -->
@@ -105,3 +169,39 @@
     <!-- /.row -->
 </div>
 @stop
+@section('js')
+        <script src="{{ asset('vendor/jquery/jquery.js') }}"></script>
+        <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+
+        <script>
+            $(function () {
+                let $options = $('table.options tbody');
+                let index = $options.find('tr').length;
+
+                $('.add-option').click(function (e) {
+                    e.preventDefault();
+                    if ($options.find('tr:last input[type="text"]').val()) {
+                        let $newRow = $options.find('tr:last').clone();
+                        $newRow.find('td input[type="text"]').prop({
+                            value: '',
+                            name: 'option_text[' + index + ']'
+                        });
+                        $newRow.find('td input[type="number"]').prop({
+                            value: '',
+                            name: 'is_correct[' + index + ']'
+                        });
+                        index++;
+                        $newRow.appendTo($options);
+                    }
+                });
+
+                $options.on('click', '.delete-option', function (e) {
+                    e.preventDefault();
+                    if ($options.find('tr').length > 1) {
+                        $(this).closest('tr').remove();
+                    }
+                });
+            });
+        </script>
+@endsection

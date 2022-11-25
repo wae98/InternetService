@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class TypeCableController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('can:cable.type.listar')->only('index');
+        $this->middleware('can:cable.type.editar')->only('edit, update');
+        $this->middleware('can:cable.type.visualizar')->only('show');
+        $this->middleware('can:cable.type.crear')->only('create, store');
+        $this->middleware('can:cable.type.eliminar')->only('destroy');
+    }
+
     public function index()
     {
         $typecables = CableType::all();

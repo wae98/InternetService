@@ -25,15 +25,17 @@ class RoleSeeder extends Seeder
             'description' => 'Permite visualizar el dashboard'
         ])->syncRoles([$role]);
 
-        //PERMISO MENU SEGURIDAD
+
+        //PERMISO MENU REPORTES
         Permission::create([
-            'name' => 'MenuSeguridad',
-            'description' => 'Acceso al menu de seguridad'
-        ])->syncRoles([$role]);
-        //PERMISO MENU SEGURIDAD
-        Permission::create([
-            'name' => 'MenuReportes',
+            'name' => 'reports',
             'description' => 'Acceso al menu de reportes'
+        ])->syncRoles([$role]);
+
+        //PERMISO MENU MenuAdministracion
+        Permission::create([
+            'name' => 'MenuAdministracion',
+            'description' => 'Acceso al menu de Administracion'
         ])->syncRoles([$role]);
 
         //PERMISO MENU CLIENTES
@@ -47,86 +49,6 @@ class RoleSeeder extends Seeder
             'name' => 'serviceAdministration',
             'description' => 'Acceso al menu de servicios'
         ])->syncRoles([$role]);
-
-
-        //asignacion al modulo de clientes
-        Permission::create([
-            'name' => 'clientes.listar',
-            'description' => 'Permite visualizar una lista de datos de los clientes'
-        ])->syncRoles([$role]);
-
-        Permission::create([
-            'name' => 'clientes.create',
-            'description' => 'Permite la creacion de un cliente'
-        ])->syncRoles([$role]);
-
-        Permission::create([
-            'name' => 'clientes.editar',
-            'description' => 'Permite la edicion de un cliente'
-        ])->syncRoles([$role]);
-
-        Permission::create([
-            'name' => 'clientes.eliminar',
-            'description' => 'Permite eliminar un cliente'
-        ])->syncRoles([$role]);
-
-
-        //asignacion de permisos
-        Permission::create([
-            'name' => 'usuarios.listar',
-            'description' => 'Permite visualizar una lista de datos de los usuarios'
-        ])->syncRoles([$role]);
-
-        Permission::create([
-            'name' => 'usuarios.create',
-            'description' => 'Permite la creacion de un usuario'
-        ])->syncRoles([$role]);
-
-        Permission::create([
-            'name' => 'usuarios.editar',
-            'description' => 'Permite la edicion de un usuario'
-        ])->syncRoles([$role]);
-
-        Permission::create([
-            'name' => 'usuarios.eliminar',
-            'description' => 'Permite eliminar un usuario'
-        ])->syncRoles([$role]);
-
-
-        // permisos para roles
-        Permission::create([
-            'name' => 'roles.listar',
-            'description' => 'Permite listar los roles creados'
-        ])->syncRoles([$role]);
-
-        Permission::create([
-            'name' => 'roles.visualizar',
-            'description' => 'Permite visualizar un rol en especifico.'
-        ])->syncRoles([$role]);
-
-        Permission::create([
-            'name' => 'roles.crear',
-            'description' => 'Permite crear un nuevo rol'
-        ])->syncRoles([$role]);
-
-        Permission::create([
-            'name' => 'roles.editar',
-            'description' => 'Permite la edicion de un rol en especifico'
-
-        ])->syncRoles([$role]);
-
-        Permission::create([
-            'name' => 'roles.eliminar',
-            'description' => 'Permite eliminar un rol'
-        ])->syncRoles([$role]);
-
-        // asignacion de permiso para el menu de administracion
-
-        Permission::create([
-            'name' => 'MenuAdministracion',
-            'description' => 'Permite acceder a los modulos de administracion'
-        ])->syncRoles([$role]);
-
 
         //permisos para Routers
         Permission::create([
@@ -443,6 +365,66 @@ class RoleSeeder extends Seeder
         Permission::create([
             'name' => 'status.routers.eliminar',
             'description' => 'Permite eliminar un status de rol'
+        ])->syncRoles([$role]);
+
+
+
+
+
+
+
+        //PERMISO MENU SEGURIDAD
+        Permission::create([
+            'name' => 'MenuSeguridad',
+            'description' => 'Acceso al menu de seguridad'
+        ])->syncRoles([$role]);
+        //asignacion de permisos
+        Permission::create([
+            'name' => 'usuarios.listar',
+            'description' => 'Permite visualizar una lista de datos de los usuarios'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'usuarios.create',
+            'description' => 'Permite la creacion de un usuario'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'usuarios.editar',
+            'description' => 'Permite la edicion de un usuario'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'usuarios.eliminar',
+            'description' => 'Permite eliminar un usuario'
+        ])->syncRoles([$role]);
+
+
+        // permisos para roles
+        Permission::create([
+            'name' => 'roles.listar',
+            'description' => 'Permite listar los roles creados'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'roles.visualizar',
+            'description' => 'Permite visualizar un rol en especifico.'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'roles.crear',
+            'description' => 'Permite crear un nuevo rol'
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'roles.editar',
+            'description' => 'Permite la edicion de un rol en especifico'
+
+        ])->syncRoles([$role]);
+
+        Permission::create([
+            'name' => 'roles.eliminar',
+            'description' => 'Permite eliminar un rol'
         ])->syncRoles([$role]);
 
     }

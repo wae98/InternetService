@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class PaymentServiceController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('can:payments.services.listar')->only('index');
+        $this->middleware('can:payments.services.editar')->only('edit, update');
+        $this->middleware('can:payments.services.visualizar')->only('show');
+        $this->middleware('can:payments.services.crear')->only('create, store');
+        $this->middleware('can:payments.services.eliminar')->only('destroy');
+    }
+
     public function index()
     {
         $payments = PaymentService::all();

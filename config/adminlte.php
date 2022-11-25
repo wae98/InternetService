@@ -342,33 +342,33 @@ return [
         [
             'text'    => 'Reportes',
             'icon'    => 'fas fa-file-alt',
-
+            'can' => 'reports',
             'submenu' => [
                 [
                     'text'    => 'Reporte de Clientes',
                     'route'     => 'customers.excel.index',
                     'icon'    => 'fas fa-user-tie',
-
+                    'can' => 'reports',
                     'label_color' => 'success',
                 ],
                 [
                     'text'        => 'Reporte de Servicios Adquiridos',
                     'route'         => 'services.excel.index',
-
+                    'can' => 'reports',
                     'icon'        => 'fas fa-handshake',
                     'label_color' => 'success',
                 ],
                 [
                     'text'        => 'Reporte Pagos',
                     'route'         => 'payments.excel.index',
-
+                    'can' => 'reports',
                     'icon'        => 'fas fa-money-bill-alt',
                     'label_color' => 'success',
                 ],
                 [
                     'text'        => 'Reporte de Fallas',
                     'route'         => 'fails.excel.index',
-
+                    'can' => 'reports',
                     'icon'        => 'fas fa-tools',
                     'label_color' => 'success',
                 ],

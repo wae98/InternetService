@@ -4,11 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\Sector;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('can:customers.listar')->only('index');
+        $this->middleware('can:customers.editar')->only('edit, update');
+        $this->middleware('can:customers.visualizar')->only('show');
+        $this->middleware('can:customers.crear')->only('create, store');
+        $this->middleware('can:customers.eliminar')->only('destroy');
+    }
+
     public function index()
     {
         $customers = Customer::all();
@@ -19,7 +29,10 @@ class CustomerController extends Controller
     public function create()
     {
         $sectors = Sector::all();
-        return view('customers.create', compact('sectors'));
+        $users = User::with("roles")->whereHas("roles", function($q) {
+            $q->whereIn("name", ["Cobrador"]);
+        })->get();
+        return view('customers.create', compact('sectors', 'users'));
     }
 
     public function store(Request $request)
@@ -42,6 +55,15 @@ class CustomerController extends Controller
                 'user_id' => Auth::id(),
             ]
         );
+        foreach($request->input('option_text') as $index => $optionText){
+            $customers->personalreference()->create(
+                [
+                    'customer_id' => $customers->id,
+                    'names' => $optionText,
+                    'phone_number' => $request->input('is_correct.'.$index)
+                ]
+            );
+        }
 
         return redirect()->route('customers.index')->with('create', 'ok');
     }
@@ -64,6 +86,15 @@ class CustomerController extends Controller
     {
         $customers = Customer::find($id);
         $customers->update($request->all());
+        foreach($request->input('option_text') as $index => $optionText){
+            $customers->personalreference()->updateOrCreate(
+                [
+                    'customer_id' => $customers->id,
+                    'names' => $optionText,
+                    'phone_number' => $request->input('is_correct.'.$index)
+                ]
+            );
+        }
         return redirect()->route('customers.index')->with('update', 'ok');
     }
 

@@ -101,9 +101,29 @@
                 type: 'success',
                 title: 'Registro actualizado',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2000
             });
+        </script>
+    @endif
+    @if (session('create') == 'ok')
+        <script>
+            Swal.fire({
+                type: 'success',
+                title: 'Registro Creado',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        </script>
+    @endif
 
+    @if (session('delete') == 'ok')
+        <script>
+            Swal.fire({
+                type: 'success',
+                title: 'Registro Eliminado',
+                showConfirmButton: false,
+                timer: 2000
+            });
         </script>
     @endif
     <script>

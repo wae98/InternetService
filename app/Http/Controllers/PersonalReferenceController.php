@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class PersonalReferenceController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('can:personal.references.listar')->only('index');
+        $this->middleware('can:personal.references.editar')->only('edit, update');
+        $this->middleware('can:personal.references.visualizar')->only('show');
+        $this->middleware('can:personal.references.crear')->only('create, store');
+        $this->middleware('can:personal.references.eliminar')->only('destroy');
+    }
+
     public function index()
     {
         $references = PersonalReference::all();
@@ -53,18 +62,17 @@ class PersonalReferenceController extends Controller
     {
         $this->validate($request, [
             'names' => 'required',
-            'phone_number' => 'required|min:8',
-            'customer_id' => 'required',
+            'phone_number' => 'required|min:8'
         ]);
         $references = PersonalReference::find($id);
         $references->update($request->all());
-        return redirect()->route('references.index')->with('update', 'ok');
+        return redirect()->back()->with('update', 'ok');
     }
 
     public function destroy($id)
     {
         $references = PersonalReference::find($id);
         $references->delete();
-        return redirect()->route('references.index')->with('delete', 'ok');
+        return redirect()->back()->with('delete', 'ok');
     }
 }

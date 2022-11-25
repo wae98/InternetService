@@ -37,8 +37,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="payment_date">Fecha de Pago <b style="color: red">*</b></label>
-                            <input type="text" name="payment_date" class="form-control" value="{{ old('payment_date') }}" placeholder="format dd/MM">
+                            <label for="payment_date">Dia de Pago <b style="color: red">*</b></label>
+                            <input type="text" name="payment_date" class="form-control" value="{{ old('payment_date') }}" placeholder="format dd">
                             @error('payment_date')
                             <small style="color:red">{{ $message }}</small>
                             <br>
