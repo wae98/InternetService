@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a class="btn btn-primary" href="{{ route('services.index') }}"> Back</a>
+                        <a class="btn btn-primary" href="{{ route('services.index') }}"> Atras</a>
                     </h3>
                 </div>
             <div class="card-body">

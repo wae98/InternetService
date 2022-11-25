@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <a class="btn btn-primary" href="{{ route('customers.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('customers.index') }}"> Atras</a>
                         </h3>
                     </div>
                     <div class="card-body">
@@ -82,6 +82,29 @@
                                 </div>
 
                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label> COBRADOR</label>
+                                        <select name="user_id" class="form-control" id="user_id">
+                                            <optgroup label="Seleccion actual">
+                                                <option value="{{$customers->user_id}}" selected>{{$customers->user->name}}</option>
+                                            </optgroup>
+                                            <optgroup label="Status">
+                                                @foreach ($users as $user)
+                                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                                @endforeach
+                                            </optgroup>
+                                        </select>
+                                        @error('user_id')
+                                        <small style="color:red">{{ $message }}</small>
+                                        <br>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                            </div>
+
                             <div class="table-responsive-sm" >
                                 <div style="width: 100%;display: flex;padding: 1%">
                                     <div style="text-align: left; width: 75%">
@@ -105,23 +128,6 @@
                                     </thead>
                                     <tbody>
                                     @foreach(old('option_text', ['']) as $key => $questionOption)
-                                        @if($customers->personalreference !==null)
-                                            @foreach($customers->personalreference as $references)
-                                                <tr>
-                                                    <td>
-                                                        <input
-                                                            class="form-control{{ $errors->has('option_text' . $key) ? 'is-invalid' : '' }}"
-                                                            type="text"
-                                                            name="option_text[{{ $loop->index }}]"
-                                                            value="{{ $references->names }}"
-                                                            required>
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" class="form-control" name="is_correct[{{ $loop->index }}]" value="{{$references->phone_number}}">
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
                                         <tr>
                                             <td>
                                                 <input
@@ -195,7 +201,7 @@
 
             $options.on('click', '.delete-option', function (e) {
                 e.preventDefault();
-                if ($options.find('tr').length > 1) {
+                if ($options.find('tr').length > 0) {
                     $(this).closest('tr').remove();
                 }
             });

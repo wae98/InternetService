@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <a class="btn btn-primary" href="{{ route('servicesproviders.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('servicesproviders.index') }}"> Atras</a>
                         </h3>
                     </div>
                     <div class="card-body">
@@ -78,7 +78,7 @@
                                             </optgroup>
                                             <optgroup label="Status">
                                                 @foreach ($routers as $router)
-                                                    <option value="{{$router->id}}">{{$router->identification . ' - ' . $router->ip_number}}</option>
+                                                    <option value="{{$router->id}}">{{$router->identification}}</option>
                                                 @endforeach
                                             </optgroup>
                                         </select>

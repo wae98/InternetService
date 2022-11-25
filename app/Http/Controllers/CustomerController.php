@@ -52,7 +52,7 @@ class CustomerController extends Controller
                 'address' =>  $request['address'],
                 'references_address' =>  $request['references_address'],
                 'sector_id' => $request['sector_id'],
-                'user_id' => Auth::id(),
+                'user_id' => $request['user_id'],
             ]
         );
         foreach($request->input('option_text') as $index => $optionText){
@@ -79,21 +79,26 @@ class CustomerController extends Controller
     {
         $customers = Customer::find($id);
         $sectors = Sector::all();
-        return view('customers.edit', compact('customers', 'sectors'));
+        $users = User::with("roles")->whereHas("roles", function($q) {
+            $q->whereIn("name", ["Cobrador"]);
+        })->get();
+        return view('customers.edit', compact('customers', 'sectors', 'users'));
     }
 
     public function update(Request $request, $id)
     {
         $customers = Customer::find($id);
         $customers->update($request->all());
-        foreach($request->input('option_text') as $index => $optionText){
-            $customers->personalreference()->updateOrCreate(
-                [
-                    'customer_id' => $customers->id,
-                    'names' => $optionText,
-                    'phone_number' => $request->input('is_correct.'.$index)
-                ]
-            );
+        if ($request->input('option_text') !== null){
+            foreach($request->input('option_text') as $index => $optionText){
+                $customers->personalreference()->updateOrCreate(
+                    [
+                        'customer_id' => $customers->id,
+                        'names' => $optionText,
+                        'phone_number' => $request->input('is_correct.'.$index)
+                    ]
+                );
+            }
         }
         return redirect()->route('customers.index')->with('update', 'ok');
     }
