@@ -103,7 +103,7 @@
             <td>
                 <ul>
                     <li class="encabezadoR"><b>Numero: </b>TKT-{{$payments->id}} </li>
-                    <li class="encabezadoR"><b>Fecha:</b> {{$payments->created_at}} </li>
+                    <li class="encabezadoR"><b>Fecha:</b> {{date("d/m/Y", strtotime($payments->date))}} </li>
                     <li class="encabezadoR"><b>Emisor:</b>  {{$payments->user->name}} </li>
                 </ul>
             </td>
@@ -144,6 +144,7 @@
     </tr>
 </table>
 <center><p><b>Gracias por su pago</b></p></center>
+<center><span>Pago realizado el dia {{date("d/m/Y", strtotime($payments->created_at))}}</span></center>
 </body>
 
 </html>

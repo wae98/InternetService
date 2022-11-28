@@ -9,7 +9,7 @@ class PaymentService extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'init_date', 'end_date', 'observations', 'total', 'user_id', 'service_provider_id'];
+    protected $fillable = ['id', 'date', 'observations', 'total', 'user_id', 'service_provider_id'];
 
     protected $guarded = [];
 

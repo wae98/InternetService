@@ -63,7 +63,8 @@ Route::resource('roles', RolesController::class)->middleware(['auth', 'verified'
 
 Route::controller(PdfController::class)->group(function () {
     Route::get('/payments/ticket/{id}', 'payments')->name('payments.ticket.pdf');
-});
+    Route::get('/payments/create/ticket/{id}', 'create')->name('create.payments.ticket.pdf');
+})->middleware(['auth', 'verified']);
 
 
 Route::controller(ExcelController::class)->group(function () {
@@ -75,7 +76,7 @@ Route::controller(ExcelController::class)->group(function () {
     Route::post('/payments/excel', 'payments')->name('payments.excel');
     Route::post('/customers/excel', 'customers')->name('customers.excel');
     Route::post('/services/excel', 'services')->name('services.excel');
-});
+})->middleware(['auth', 'verified']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('register', function () {
     return view('inicio');

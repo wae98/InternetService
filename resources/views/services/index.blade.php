@@ -31,6 +31,7 @@
                                 <tr>
                                     <th>NOMBRE</th>
                                     <th>PRECIO</th>
+                                    <th>PRECIO DE INSTALACION</th>
                                     <th>DESCRIPCION</th>
                                     <th>TIPO DE CABLE</th>
                                     <th>ACCIONES</th>
@@ -40,7 +41,8 @@
                                 @foreach ($services as $service)
                                     <tr>
                                         <td> {{ $service->name }} </td>
-                                        <td> Q. {{ $service->price }} </td>
+                                        <td> Q. {{ number_format($service->price,2) }} </td>
+                                        <td> Q. {{ number_format($service->installation_price,2) }} </td>
                                         <td> {{ $service->description }} </td>
                                         <td> {{ $service->cabletype->name }} </td>
                                         <td>

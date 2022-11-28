@@ -25,11 +25,9 @@
                                     <strong>SERVICIO: </strong>{{$payments->serviceprovider->service->name}}
                                 </div>
                                 <div class="form-group">
-                                    <strong>FECHA INICIAL: </strong>{{$payments->init_date}}
+                                    <strong>FECHA DE PAGO: </strong>{{$payments->date}}
                                 </div>
-                                <div class="form-group">
-                                    <strong>FECHA FINAL: </strong>{{$payments->end_date}}
-                                </div>
+
                                 <div class="form-group">
                                     <strong>REGISTRADO POR: </strong>{{$payments->user->name}}
                                 </div>

@@ -36,6 +36,7 @@ class ServiceController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'price' => 'required|min:2',
+            'installation_price' => 'required|min:2',
             'description' => 'required',
             'cable_type_id' => 'required',
         ]);
@@ -64,6 +65,7 @@ class ServiceController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'price' => 'required|min:2',
+            'installation_price' => 'required|min:2',
             'description' => 'required',
             'cable_type_id' => 'required',
         ]);

@@ -73,6 +73,15 @@
                                                                     class="fas fa-eye"></i></a>
                                                         </div>
                                                     @endcan
+
+                                                    @can('payments.services.crear')
+                                                        <div class="boton-warning">
+                                                            <a class="btn btn-sm btn-success"
+                                                               href="{{ route('create.payments.ticket.pdf', $service->id) }}">
+                                                                <i class="fas fa-file-invoice-dollar"></i>
+                                                            </a>
+                                                        </div>
+                                                    @endcan
                                                 @can('services.providers.eliminar')
                                                     <form action="{{ route('servicesproviders.destroy', $service) }}"
                                                           class="delete-usuario" method="POST">

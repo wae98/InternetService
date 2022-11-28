@@ -59,21 +59,11 @@
                             </div>
                             </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>FECHA INICIAL  *</label>
-                                    <input type="date" name="init_date" id="init_date" class="form-control" value="{{ old('init_date') }}">
-                                    @error('init_date')
-                                    <small style="color:red">{{ $message }}</small>
-                                    <br>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>FECHA FINAL  *</label>
-                                    <input type="date"  name="end_date" id="end_date" class="form-control" value="{{ old('end_date') }}">
-                                    @error('end_date')
+                                    <label>FECHA DE PAGO  *</label>
+                                    <input type="date" name="date" id="date" class="form-control" value="{{ old('date') }}">
+                                    @error('date')
                                     <small style="color:red">{{ $message }}</small>
                                     <br>
                                     @enderror

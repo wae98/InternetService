@@ -41,6 +41,15 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="installation_price">PRECIO DE INSTALACION <b style="color: red">*</b></label>
+                                <input type="text" name="installation_price" class="form-control" value="{{ $services->installation_price }}">
+                                @error('installation_price')
+                                <small style="color:red">{{ $message }}</small>
+                                <br>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
                                 <label for="description">DESCRIPCION  <b style="color: red">*</b></label>
                                 <textarea name="description" class="form-control">{{ $services->description }}</textarea>
                                 @error('description')

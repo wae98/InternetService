@@ -31,7 +31,6 @@
                                 <tr>
                                     <th>CLIENTE</th>
                                     <th>SERVICIO</th>
-                                    <th>FECHA INICIAL</th>
                                     <th>FECHA DE PAGO</th>
                                     <th>OBSERVACIONES</th>
                                     <th>REGISTRADO POR:</th>
@@ -44,8 +43,7 @@
                                     <tr>
                                         <td> {{ $payment->serviceprovider->customer->names}} </td>
                                         <td> {{ $payment->serviceprovider->service->name}} </td>
-                                        <td> {{ $payment->init_date}} </td>
-                                        <td> {{ $payment->end_date}} </td>
+                                        <td> {{date("d/m/Y", strtotime($payment->date))}} </td>
                                         <td> {{ $payment->observations}} </td>
                                         <td> {{ $payment->user->name}} </td>
                                         <td> {{ $payment->created_at}} </td>

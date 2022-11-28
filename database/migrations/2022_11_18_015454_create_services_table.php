@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->double('price');
+            $table->double('installation_price');
             $table->text('description');
             $table->unsignedBigInteger('cable_type_id');
             $table->foreign('cable_type_id')->references('id')->on('cable_types');

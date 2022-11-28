@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Rap2hpoutre\FastExcel\Facades\FastExcel;
-use Rap2hpoutre\FastExcel\FastExcel as FastExcelFastExcel;
 
 class ExcelController extends Controller
 {

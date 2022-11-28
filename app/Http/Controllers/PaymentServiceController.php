@@ -37,14 +37,12 @@ class PaymentServiceController extends Controller
             'service_provider_id' => 'required',
             'observations' => 'required',
             'total' => 'required|min:2',
-            'init_date' => 'required',
-            'end_date' => 'required',
+            'date' => 'required'
         ]);
 
         $payments = PaymentService::create(
             [
-                'init_date' =>  $request['init_date'],
-                'end_date' =>  $request['end_date'],
+                'date' =>  $request['date'],
                 'observations' =>  $request['observations'],
                 'total' =>  $request['total'],
                 'service_provider_id' =>  $request['service_provider_id'],
@@ -75,8 +73,7 @@ class PaymentServiceController extends Controller
             'service_provider_id' => 'required',
             'observations' => 'required',
             'total' => 'required|min:2',
-            'init_date' => 'required',
-            'end_date' => 'required',
+            'date' => 'required'
         ]);
 
         $payments = PaymentService::find($id);

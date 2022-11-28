@@ -22,7 +22,10 @@
                                     <strong>NOMBRE: </strong>{{$services->name}}
                                 </div>
                                 <div class="form-group">
-                                    <strong>PRECIO: </strong>{{$services->price}}
+                                    <strong>PRECIO: </strong>Q. {{number_format($services->price, 2)}}
+                                </div>
+                                <div class="form-group">
+                                    <strong>PRECIO DE INSTALACION: </strong>Q. {{number_format($services->installation_price,2)}}
                                 </div>
                                 <div class="form-group">
                                     <strong>DESCRIPCION: </strong>{{$services->description}}

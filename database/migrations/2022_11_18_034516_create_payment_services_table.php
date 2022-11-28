@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('payment_services', function (Blueprint $table) {
             $table->id();
-            $table->date('init_date');
-            $table->date('end_date');
+            $table->date('date');
             $table->string('observations');
             $table->double('total');
             $table->unsignedBigInteger('user_id');

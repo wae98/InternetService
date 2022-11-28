@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasFactory;
-    protected $fillable=['id','name', 'description', 'price', 'cable_type_id'];
+    protected $fillable=['id','name', 'description', 'price','installation_price', 'cable_type_id'];
 
     protected $guarded = [];
 
