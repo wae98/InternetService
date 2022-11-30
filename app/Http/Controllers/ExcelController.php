@@ -31,8 +31,7 @@ class ExcelController extends Controller
                                         WHEN SP.STATUS = 1 THEN "Activo"
                                         ELSE "Inactivo"
                                         END as SERVICIO,
-                                        PS.INIT_DATE AS FECHA_INICIAL,
-                                        PS.END_DATE AS FECHA_FINAL,
+                                        PS.DATE AS FECHA_PAGO,
                                         PS.TOTAL,
                                         PS.OBSERVATIONS AS OBSERVACIONES,
                                         U.NAME AS CREADO_POR,
@@ -42,7 +41,7 @@ class ExcelController extends Controller
                                     INNER JOIN USERS U ON PS.USER_ID = U.ID
                                     INNER JOIN CUSTOMERS C ON C.ID = SP.CUSTOMER_ID
                                     INNER JOIN SERVICES S ON S.ID = SP.SERVICE_ID
-                                    WHERE PS.INIT_DATE >= :init_date AND PS.END_DATE <= :end_date
+                                    WHERE PS.DATE >= :init_date AND PS.DATE <= :end_date
                                 ', $bindings);
         return FastExcel($payments)->download('Pagos realizados de fecha '.$request->init_date .' - '.$request->end_date.'.xlsx');
     }
